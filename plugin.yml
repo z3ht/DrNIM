@@ -1,0 +1,36 @@
+main: com.zinno.nim.Main
+version: 1.0.0
+name: DrNIM
+author: Zinno
+
+commands:
+  nim:
+    description: Get info about NIM
+    usage: /NIM
+    permission: nim.nim
+
+permissions:
+  nim.*:
+    description: Give access to all NIM commands
+    children:
+      nim.nim: true
+      nim.start: true
+      nim.debug: true
+  nim.nim:
+    description: Allow players to use NIM
+    default: true
+  nim.start:
+    description: Allow players to start NIM games
+    default: true
+    children:
+      nim.nim: true
+  nim.tutorial:
+    description: Allow players to access the tutorial
+    default: true
+    children:
+      nim.nim: true
+  nim.debug:
+    description: Allow players to debug NIM games
+    default: op
+    children:
+      nim.nim: true
