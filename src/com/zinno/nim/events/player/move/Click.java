@@ -29,7 +29,7 @@ public class Click implements Listener {
 			return;
 		} else if(!(GameMaker.checkPlayer(event.getPlayer().getName()))) {
 			return;
-		} else if(event.getPlayer().getTargetBlock((HashSet<Byte>) null, 30) == null || event.getPlayer().getTargetBlock((HashSet<Byte>) null, 30) == Material.AIR) {
+		} else if(event.getPlayer().getTargetBlock(null, 30) == null || event.getPlayer().getTargetBlock(null, 30) == Material.AIR) {
 			return;
 		}
 		
@@ -43,7 +43,7 @@ public class Click implements Listener {
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "-- <> --");
 			return;
 		}
-		Block currentBlock = player.getTargetBlock((HashSet<Byte>) null, 30);
+		Block currentBlock = player.getTargetBlock(null, 30);
 		if(!board.isChip(currentBlock.getLocation())) {
 			return;
 		}

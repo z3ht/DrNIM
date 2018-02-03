@@ -73,7 +73,7 @@ public class User extends MiniGamePlayer {
 
 			@SuppressWarnings("deprecation")
 			public void run() {
-				Block currentBlock = player.getTargetBlock((HashSet<Byte>) null, 30);
+				Block currentBlock = player.getTargetBlock( null, 30);
 				if (highlightedBlocks[2] != null && highlightedBlocks[2] != highlightedBlocks[1]
 						&& highlightedBlocks[2].CanHighlight()) {
 					highlightedBlocks[2].removeColor();

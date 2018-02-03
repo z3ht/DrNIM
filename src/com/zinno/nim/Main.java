@@ -54,12 +54,12 @@ public class Main extends JavaPlugin {
 	}
 
 	private void registerSubCommands() {
-		NIM.addCommand(Arrays.asList("start", "s", "invite", "inv"), new Start());
-		NIM.addCommand(Arrays.asList("accept", "a"), new Accept());
-		NIM.addCommand(Arrays.asList("expire", "e"), new Expire());
-		NIM.addCommand(Arrays.asList("leave", "l", "exit", "quit"), new Leave());
-		NIM.addCommand(Arrays.asList("help", "h"), new Help());
-		NIM.addCommand(Arrays.asList("tutorial", "tut", "t"), new Tutorial());
+		NIM.addCommand(Arrays.asList("start", "invite"), new Start());
+		NIM.addCommand(Arrays.asList("accept"), new Accept());
+		NIM.addCommand(Arrays.asList("expire"), new Expire());
+		NIM.addCommand(Arrays.asList("leave", "exit", "quit"), new Leave());
+		NIM.addCommand(Arrays.asList("help"), new Help());
+		NIM.addCommand(Arrays.asList("tutorial"), new Tutorial());
 	}
 
 }

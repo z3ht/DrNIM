@@ -2,6 +2,7 @@ main: com.zinno.nim.Main
 version: 1.0.0
 name: DrNIM
 author: Zinno
+database: false
 
 commands:
   nim:

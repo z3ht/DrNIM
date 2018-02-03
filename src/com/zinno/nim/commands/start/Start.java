@@ -14,6 +14,8 @@ import com.zinno.nim.util.CenteredText;
 
 import net.md_5.bungee.api.ChatColor;
 
+import java.util.List;
+
 public class Start implements SubCommand {
 	
 	public void runCommand(CommandSender sender, Command cmd, String[] args) {
@@ -39,6 +41,7 @@ public class Start implements SubCommand {
 			if(args[1].equalsIgnoreCase(player.getName())) {
 				player.sendMessage(ChatColor.RED + "You can not send invites to yourself.");
 				player.sendMessage(ChatColor.RED + "Type /nim start to play against the computer");
+				return;
 			}
 			for(Player p : Bukkit.getOnlinePlayers()) {
 				if(p.getName().equalsIgnoreCase(args[1])) {
@@ -61,7 +64,6 @@ public class Start implements SubCommand {
 			            }
 			            
 			        }.runTaskLater(Bukkit.getPluginManager().getPlugin("DrNIM"), 1200);
-			        return;
 				}
 			}
 			player.sendMessage(ChatColor.RED + "The player could not be found");
