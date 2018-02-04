@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class InventoryListener implements Listener {
 	
-	private final static int DELAY = 5;
+	private final static int DELAY = 3;
 	private Player player;
 	private GameSettings gameSettings;
 	
@@ -41,6 +41,9 @@ public class InventoryListener implements Listener {
 			this.gameSettings = new GameSettings();
 		else
 			this.gameSettings = GameSettings.getPlayerGameSettingsMap().get(player);
+		
+		if(gameSettings.isLockedOut())
+			return;
 		
 		switch (event.getSlot()) {
 			case 10:
@@ -67,18 +70,21 @@ public class InventoryListener implements Listener {
 		
 		HashMap<Player, GameSettings> playerGameSettingsMap = GameSettings.getPlayerGameSettingsMap();
 		if (gameSettings.isComplete()) {
+			gameSettings.setLockedOut(true);
+			playerGameSettingsMap.put(player, gameSettings);
+			GameSettings.setPlayerGameSettingsMap(playerGameSettingsMap);
 			runAntiCombatLog();
 			beginGame();
-			playerGameSettingsMap.remove(player);
-		} else
+		} else {
 			playerGameSettingsMap.put(player, gameSettings);
-		GameSettings.setPlayerGameSettingsMap(playerGameSettingsMap);
+			GameSettings.setPlayerGameSettingsMap(playerGameSettingsMap);
+		}
 	}
 	
 	@EventHandler
 	public void onCloseInventory(InventoryCloseEvent event) {
 		if(!(event.getPlayer() instanceof Player) ||
-				!event.getInventory().equals(InventoryMaker.getInv()))
+				!event.getInventory().getName().equals(InventoryMaker.getInv().getName()))
 			return;
 		
 		this.player = (Player) event.getPlayer();
@@ -113,13 +119,23 @@ public class InventoryListener implements Listener {
 	
 	private void beginGame() {
 		final Player currentPlayer = player;
+		final GameSettings currentGameSettings = gameSettings;
 		new BukkitRunnable() {
 				@Override
 				public void run() {
+					
+					System.out.println(currentGameSettings.isLockedOut());
+					
 					if(!currentPlayer.getOpenInventory().getTitle().equals(InventoryMaker.getInv().getTitle()))
 						return;
-					GameMaker.createGame(currentPlayer, gameSettings.getDifficulty(),
-							gameSettings.getMapSize());
+					
+					GameMaker.createGame(currentPlayer, currentGameSettings.getDifficulty(),
+							currentGameSettings.getMapSize());
+					
+					HashMap<Player, GameSettings> playerGameSettingsMap = GameSettings.getPlayerGameSettingsMap();
+					playerGameSettingsMap.remove(currentPlayer);
+					GameSettings.setPlayerGameSettingsMap(playerGameSettingsMap);
+					
 					currentPlayer.closeInventory();
 				}
 			}.runTaskLater(Config.getPlugin(), 18*DELAY);
@@ -145,7 +161,7 @@ public class InventoryListener implements Listener {
 			ItemMeta alternateMeta = alternateItem.getItemMeta();
 			alternateMeta.setLore(Arrays.asList(ChatColor.GRAY.toString() + ChatColor.ITALIC + "Selected"));
 			alternateItem.setItemMeta(alternateMeta);
-			inv.setItem(newSlot, alternateItem);
+			inv.setItem(alternateTypeSlot, alternateItem);
 		}
 		ItemStack newItem = inv.getItem(newSlot);
 		ItemMeta newMeta = newItem.getItemMeta();

@@ -35,7 +35,7 @@ public class Tutorial {
 				+ "  - NIM originated from China as early as the 15th century" + "\n"
 				+ "  - NIM is not a game based on luck, but instead XOR logic" + "\n"
 				+ "  - This version of NIM was first released on July 23, 2017");
-		bookMeta.setDisplayName(ChatColor.DARK_AQUA.toString() + ChatColor.BOLD + "Dr. NIM");
+		bookMeta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD + "Dr. NIM: " + ChatColor.GRAY + "Tutorial");
 		bookMeta.setAuthor("Zinno");
 		book.setItemMeta(bookMeta);
 		return book;

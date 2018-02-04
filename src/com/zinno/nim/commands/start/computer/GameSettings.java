@@ -15,12 +15,15 @@ public class GameSettings {
 	
 	private int difficulty;
 	private int mapSize;
+	private boolean lockedOut;
 	
 	public int getDifficulty() {
 		return difficulty;
 	}
 	
 	public void setDifficulty(int difficulty) {
+		if(isLockedOut())
+			return;
 		this.difficulty = difficulty;
 	}
 	
@@ -29,11 +32,21 @@ public class GameSettings {
 	}
 	
 	public void setMapSize(int mapSize) {
+		if(isLockedOut())
+			return;
 		this.mapSize = mapSize;
 	}
 	
 	public boolean isComplete() {
 		return difficulty != 0 && mapSize != 0;
+	}
+	
+	public boolean isLockedOut() {
+		return lockedOut;
+	}
+	
+	public void setLockedOut(boolean lockedOut) {
+		this.lockedOut = lockedOut;
 	}
 	
 	public static HashMap<Player, GameSettings> getPlayerGameSettingsMap() {

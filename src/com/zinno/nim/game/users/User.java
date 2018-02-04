@@ -76,7 +76,7 @@ public class User extends MiniGamePlayer {
 
 			@SuppressWarnings("deprecation")
 			public void run() {
-				Block currentBlock = player.getTargetBlock( null, 30);
+				Block currentBlock = player.getTargetBlock( null, 50);
 				if (highlightedBlocks[2] != null && highlightedBlocks[2] != highlightedBlocks[1]
 						&& highlightedBlocks[2].CanHighlight()) {
 					highlightedBlocks[2].removeColor();
@@ -110,14 +110,14 @@ public class User extends MiniGamePlayer {
 	public void clearPlayerInfo(int playerNumber) {
 		
 		World nimWorld = Bukkit.createWorld(new WorldCreator("NIM").generator(new Generator()));
-		int x = xLoc - 4 - (playerNumber * 4);
+		int x = xLoc - 6 - (playerNumber * 4);
 		int y = -1;
 		if(board.getSize() == 3) {
 			y = 156;
 		}else if(board.getSize() == 4) {
 			y = 162;
 		}
-		int z = -10;
+		int z = -20;
 		Location loc = new Location(nimWorld, x, y, z);
 		player.setInvulnerable(true);
 		alert(ChatColor.GOLD + "Welcome, " + player.getName() + " to NIM!",
