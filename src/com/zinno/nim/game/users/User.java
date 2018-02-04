@@ -37,6 +37,7 @@ public class User extends MiniGamePlayer {
 	private boolean isCancelled;
 	private double health;
 	private float saturation;
+	private int fireTicks;
 
 	public User(Player player, Board board, Game game, int xLoc) {
 		super(game, board);
@@ -53,6 +54,7 @@ public class User extends MiniGamePlayer {
 		playerStats = player.getActivePotionEffects();
 		health = player.getHealth();
 		saturation = player.getSaturation();
+		fireTicks = player.getFireTicks();
 	}
 
 	public void returnPlayerInfo() {
@@ -65,6 +67,7 @@ public class User extends MiniGamePlayer {
 			player.removePotionEffect(effect.getType());
 		}
 		player.addPotionEffects(playerStats);
+		player.setFireTicks(fireTicks);
 		isCancelled = true;
 	}
 
@@ -119,7 +122,12 @@ public class User extends MiniGamePlayer {
 		player.setInvulnerable(true);
 		alert(ChatColor.GOLD + "Welcome, " + player.getName() + " to NIM!",
 				ChatColor.GRAY + "Developed By: Zinno");
-		player.teleport(loc);
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				player.teleport(loc);
+			}
+		}.runTaskLater(Config.getPlugin(), 5);
 		player.setHealth(20);
 		player.setSaturation(20);
 		

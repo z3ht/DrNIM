@@ -17,7 +17,7 @@ public class Tutorial {
 		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 		BookMeta bookMeta = (BookMeta) book.getItemMeta();
 		bookMeta.addPage( ChatColor.GOLD.toString() + ChatColor.BOLD + "Welcome to NIM" + ChatColor.RESET + "\n"
-				+ ChatColor.GRAY + "Developed By: Zinno" + ChatColor.RESET + "\n" + "\n" + ChatColor.BLUE
+				+ ChatColor.DARK_GRAY + "Developed By: Zinno" + ChatColor.RESET + "\n" + "\n" + ChatColor.BLUE
 				+ "Objective:" + ChatColor.RESET + "\n" + "Force the other player to be the last to remove a piece");
 		bookMeta.addPage(ChatColor.BLUE + "Rules:" + ChatColor.RESET + "\n"
 				+ "  - You may only remove pieces from one row at a time" + "\n"

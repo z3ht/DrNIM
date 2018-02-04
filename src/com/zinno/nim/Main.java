@@ -2,6 +2,7 @@ package com.zinno.nim;
 
 import java.util.Arrays;
 
+import com.zinno.nim.events.player.security.CommandPreProcess;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -46,6 +47,8 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new ConfirmMove(), this);
 		pm.registerEvents(new LeaveMiniGame(), this);
 		pm.registerEvents(new InventoryListener(), this);
+		pm.registerEvents(new Help(), this);
+		pm.registerEvents(new CommandPreProcess(), this);
 	}
 
 	private void registerCommands() {

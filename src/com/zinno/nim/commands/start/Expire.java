@@ -1,5 +1,6 @@
 package com.zinno.nim.commands.start;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -23,6 +24,8 @@ public class Expire implements SubCommand {
 		if(NIMvites.killNimInv(player.getName(), args[1])) {
 			player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
 					+ ChatColor.GREEN + "The invitation has been deleted!");
+			Bukkit.getPlayer(args[1]).sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+					+ ChatColor.GOLD + "The invitation from " + player.getName() + " has expired!");
 			return;
 		}
 		player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "

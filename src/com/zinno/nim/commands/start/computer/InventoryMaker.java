@@ -6,17 +6,22 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.zinno.nim.commands.start.computer.util.InventoryStorage;
-
 import net.md_5.bungee.api.ChatColor;
+
+import java.util.HashMap;
 
 public class InventoryMaker implements Listener {
 	
-	public void createInventory(Player player) {
-		Inventory inv = Bukkit.createInventory(player, 36, ChatColor.BOLD + "Dr. NIM");
+	private static Inventory inv;
+	
+	private InventoryMaker() {}
+	
+	private static void generateInv() {
+		inv = Bukkit.createInventory((InventoryHolder) () -> null, 36, ChatColor.BOLD + "Dr. NIM");
 		
 		ItemStack barFiller = new ItemStack(Material.RAILS, 1);
 		ItemMeta barFillerMeta = barFiller.getItemMeta();
@@ -70,11 +75,10 @@ public class InventoryMaker implements Listener {
 		fourMeta.setDisplayName(ChatColor.GRAY.toString() + ChatColor.BOLD + "1x3x5x7");
 		four.setItemMeta(fourMeta);
 		inv.setItem(24, four);
-		
-		InventoryStorage.setPlayerInv(player.getName(), inv);
-		InventoryStorage.setPlayerDifficulty(player.getName(), 0);
-		InventoryStorage.setPlayerGameType(player.getName(), 0);
-		
-		player.openInventory(inv);
+	}
+	
+	public static Inventory getInv() {
+		generateInv();
+		return inv;
 	}
 }

@@ -35,8 +35,7 @@ public class Start implements SubCommand {
 		}
 		switch(args.length) {
 		case 1:
-			InventoryMaker sp = new InventoryMaker();
-			sp.createInventory(player);
+			player.openInventory(InventoryMaker.getInv());
 			return;
 		case 2:
 			if(args[1].equalsIgnoreCase(player.getName())) {

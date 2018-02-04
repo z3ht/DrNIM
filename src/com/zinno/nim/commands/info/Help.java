@@ -1,10 +1,7 @@
 package com.zinno.nim.commands.info;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import com.zinno.nim.commands.start.computer.util.InventoryStorage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -23,11 +20,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class Help implements SubCommand, Listener {
 	
-	private Inventory inventory;
+	private static Inventory inventory;
 	
 	@EventHandler
 	public void onClickEvent(InventoryClickEvent event) {
 		if (!(event.getWhoClicked() instanceof Player) ||
+				inventory == null ||
 				!(event.getInventory().getName().equals(inventory.getName()))) {
 			return;
 		}
