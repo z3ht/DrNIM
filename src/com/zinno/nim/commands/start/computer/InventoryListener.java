@@ -122,7 +122,7 @@ public class InventoryListener implements Listener {
 							gameSettings.getMapSize());
 					currentPlayer.closeInventory();
 				}
-			}.runTaskLater(Config.getPlugin(), 18*DELAY + 10);
+			}.runTaskLater(Config.getPlugin(), 18*DELAY);
 	}
 	
 	private void setSelected(GameSettings.Types gameType, int newSlot) {
