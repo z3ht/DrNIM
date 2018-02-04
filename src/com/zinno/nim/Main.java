@@ -9,11 +9,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.zinno.nim.commands.NIM;
 import com.zinno.nim.commands.exit.Leave;
 import com.zinno.nim.commands.info.Help;
-import com.zinno.nim.commands.info.Tutorial;
 import com.zinno.nim.commands.start.Accept;
 import com.zinno.nim.commands.start.Expire;
 import com.zinno.nim.commands.start.Start;
-import com.zinno.nim.commands.start.computer.ComputerOptions;
+import com.zinno.nim.commands.start.computer.InventoryListener;
 import com.zinno.nim.events.player.leave.LeaveGame;
 import com.zinno.nim.events.player.leave.LeaveMiniGame;
 import com.zinno.nim.events.player.move.Click;
@@ -46,7 +45,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new InventoryClick(), this);
 		pm.registerEvents(new ConfirmMove(), this);
 		pm.registerEvents(new LeaveMiniGame(), this);
-		pm.registerEvents(new ComputerOptions(), this);
+		pm.registerEvents(new InventoryListener(), this);
 	}
 
 	private void registerCommands() {
@@ -59,7 +58,6 @@ public class Main extends JavaPlugin {
 		NIM.addCommand(Arrays.asList("expire"), new Expire());
 		NIM.addCommand(Arrays.asList("leave", "exit", "quit"), new Leave());
 		NIM.addCommand(Arrays.asList("help"), new Help());
-		NIM.addCommand(Arrays.asList("tutorial"), new Tutorial());
 	}
 
 }

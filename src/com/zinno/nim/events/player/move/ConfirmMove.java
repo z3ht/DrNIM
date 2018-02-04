@@ -33,7 +33,7 @@ public class ConfirmMove implements Listener {
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + " ----------  Dr. Nim  ---------- ");
 			CenteredText.sendCenteredMessage(player, ChatColor.RED + "It's not your turn!");
 			CenteredText.sendCenteredMessage(player,
-					ChatColor.RED.toString() + ChatColor.ITALIC + "Type /nim tut for a tutorial");
+					ChatColor.RED.toString() + ChatColor.ITALIC + "Read the tutorial book for rules");
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "-- <> --");
 			return;
 		}
@@ -43,7 +43,7 @@ public class ConfirmMove implements Listener {
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + " ----------  Dr. Nim  ---------- ");
 			CenteredText.sendCenteredMessage(player, ChatColor.RED + "That is not a legal move");
 			CenteredText.sendCenteredMessage(player,
-					ChatColor.RED.toString() + ChatColor.ITALIC + "Type /nim tut for a tutorial");
+					ChatColor.RED.toString() + ChatColor.ITALIC + "Read the tutorial book for rules");
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "-- <> --");
 			return;
 		}

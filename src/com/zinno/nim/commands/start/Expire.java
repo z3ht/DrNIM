@@ -14,16 +14,19 @@ public class Expire implements SubCommand {
 	@Override
 	public void runCommand(CommandSender sender, Command cmd, String[] args) {
 		if(!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + "Only players can use this command");
+			sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+					+ ChatColor.RED + "Only players can use this command");
 			return;
 		}
 		Player player = (Player) sender;
 		
 		if(NIMvites.killNimInv(player.getName(), args[1])) {
-			player.sendMessage(ChatColor.GREEN + "The invitation has been deleted!");
+			player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+					+ ChatColor.GREEN + "The invitation has been deleted!");
 			return;
 		}
-		player.sendMessage(ChatColor.RED + "The invitation could not be found or already expired");
+		player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+				+ ChatColor.RED + "The invitation could not be found or already expired");
 	}
 
 }

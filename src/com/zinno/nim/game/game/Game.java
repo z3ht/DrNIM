@@ -36,7 +36,7 @@ public abstract class Game {
 		int counter = 1;
 		for (User u : uList) {
 			u.clearPlayerInfo(counter);
-			u.alert(ChatColor.GREEN + "Welcome to NIM", ChatColor.DARK_GREEN + "Developed By: Zinno");
+			u.alert(ChatColor.GOLD + "Welcome to NIM", ChatColor.GRAY + "Developed By: Zinno");
 			counter += 1;
 		}
 	}

@@ -34,11 +34,11 @@ public class LeaveMiniGame implements Listener {
 			LeaveStorage.delPlayer(player.getName());
 			return;
 		}
-		CenteredText.sendCenteredMessage(player, ChatColor.GOLD + " ----------  Dr. Nim  ---------- ");
-		CenteredText.sendCenteredMessage(player, ChatColor.RED + "Click the pearl again to leave");
+		CenteredText.sendCenteredMessage(player, ChatColor.GRAY + " ----------  Dr. Nim  ---------- ");
+		CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "Click the pearl to confirm your departure");
 		CenteredText.sendCenteredMessage(player,
-				ChatColor.RED.toString() + ChatColor.ITALIC + "Type /nim tut for a tutorial");
-		CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "-- <> --");
+				ChatColor.GOLD.toString() + ChatColor.ITALIC + "Or, type /nim leave");
+		CenteredText.sendCenteredMessage(player, ChatColor.GRAY + "-- <> --");
 		LeaveStorage.addPlayer(player.getName());
 		new BukkitRunnable() {
 			public void run() {

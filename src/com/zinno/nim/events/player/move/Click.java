@@ -2,6 +2,7 @@ package com.zinno.nim.events.player.move;
 
 import java.util.HashSet;
 
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +19,6 @@ import com.zinno.nim.util.CenteredText;
 import com.zinno.nim.util.Config;
 
 import net.md_5.bungee.api.ChatColor;
-import net.minecraft.server.v1_12_R1.Material;
 
 public class Click implements Listener {
 
@@ -29,7 +29,7 @@ public class Click implements Listener {
 			return;
 		} else if(!(GameMaker.checkPlayer(event.getPlayer().getName()))) {
 			return;
-		} else if(event.getPlayer().getTargetBlock(null, 30) == null || event.getPlayer().getTargetBlock(null, 30) == Material.AIR) {
+		} else if(event.getPlayer().getTargetBlock(null, 30) == null || event.getPlayer().getTargetBlock(null, 30).isEmpty()) {
 			return;
 		}
 		
@@ -58,7 +58,7 @@ public class Click implements Listener {
 			}.runTaskLater(Config.getPlugin(), 20);
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + " ----------  Dr. Nim  ---------- ");
 			CenteredText.sendCenteredMessage(player, ChatColor.RED + "You can't move there");
-			CenteredText.sendCenteredMessage(player, ChatColor.RED.toString() + ChatColor.ITALIC + "Type /nim tut for a tutorial");
+			CenteredText.sendCenteredMessage(player, ChatColor.RED.toString() + ChatColor.ITALIC + "Read the tutorial book for rules");
 			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "-- <> --");
 			return;
 		}

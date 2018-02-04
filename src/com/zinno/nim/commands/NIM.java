@@ -21,22 +21,25 @@ public class NIM implements CommandExecutor, TabCompleter {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
 		if (!sender.hasPermission("nim.nim")) {
-			sender.sendMessage(ChatColor.RED + "You do not have permission to use the NIM plugin");
+			sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+					+ ChatColor.RED + "You do not have permission to use the NIM plugin");
 			return true;
 		}
 		
 		if (args.length == 0) {
 			if (!(sender instanceof Player)) {
-				sender.sendMessage(ChatColor.RED + "Only players can access this command");
+				sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+						+ ChatColor.RED + "Only players can access this command");
 				return true;
 			}
 			Player player = (Player) sender;
-			CenteredText.sendCenteredMessage(player, ChatColor.LIGHT_PURPLE + "---------------------");
-			CenteredText.sendCenteredMessage(player, ChatColor.AQUA + "Dr. NIM");
-			CenteredText.sendCenteredMessage(player, ChatColor.AQUA + "Designed By: Zinno");
-			CenteredText.sendCenteredMessage(player, ChatColor.LIGHT_PURPLE + "---------------------");
+			CenteredText.sendCenteredMessage(player, ChatColor.DARK_GRAY + "---------------------");
+			CenteredText.sendCenteredMessage(player, ChatColor.GOLD.toString() + ChatColor.BOLD + "Dr. NIM");
+			CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "Designed By: Zinno");
+			CenteredText.sendCenteredMessage(player, ChatColor.DARK_GRAY + "---------------------");
 			player.sendMessage("");
-			player.sendMessage(ChatColor.GOLD + "Pssst... Type /nim help for a list of commands");
+			player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+					+ ChatColor.GRAY.toString() + ChatColor.ITALIC + "Pssst... Type /nim help for a list of commands");
 			return true;
 		}
 		
@@ -51,17 +54,26 @@ public class NIM implements CommandExecutor, TabCompleter {
 		for (String tabCompleteItem : tabCompleteList) {
 			if (tabCompleteItem.toLowerCase().startsWith(args[0].toLowerCase())) {
 				if (intendedItem != null) {
-					sender.sendMessage(ChatColor.RED + "The command could not be found");
+					sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+							+ ChatColor.RED + "The command could not be found");
 					return true;
 				}
 				intendedItem = tabCompleteItem;
 			}
 		}
 		if (intendedItem == null) {
-			sender.sendMessage(ChatColor.RED + "The command could not be found");
+			sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+					+ ChatColor.RED + "The command could not be found");
 			return true;
 		}
-		Bukkit.dispatchCommand(sender, "nim " + intendedItem + " " + args.toString().substring(args[0].length() + args[1].length() + 1));
+		
+		for (List<String> sList : subCommand.keySet()) {
+			if (sList.contains(intendedItem.toLowerCase())) {
+				subCommand.get(sList).runCommand(sender, cmd, args);
+				return true;
+			}
+		}
+		
 		return true;
 	}
 	
@@ -77,7 +89,7 @@ public class NIM implements CommandExecutor, TabCompleter {
 			return null;
 		if(args.length == 0)
 			return tabCompleteList;
-		List<String> cutList = new ArrayList<String>();
+		List<String> cutList = new ArrayList<>();
 		for(String item : tabCompleteList) {
 			if(item.startsWith(args[0].toLowerCase()))
 				cutList.add(item);

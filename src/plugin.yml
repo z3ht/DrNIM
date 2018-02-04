@@ -1,8 +1,8 @@
 main: com.zinno.nim.Main
-version: 1.0.0
+version: 1.2.1
 name: DrNIM
 author: Zinno
-database: false
+description: Entertaining, lightweight minigame plugin
 
 commands:
   nim:
@@ -12,26 +12,25 @@ commands:
 
 permissions:
   nim.*:
-    description: Give access to all NIM commands
+    description: Access to all NIM commands
     children:
       nim.nim: true
       nim.start: true
-      nim.debug: true
   nim.nim:
-    description: Allow players to use NIM
+    description: Use NIM
     default: true
   nim.start:
-    description: Allow players to start NIM games
+    description: Start NIM games
     default: true
     children:
       nim.nim: true
-  nim.tutorial:
-    description: Allow players to access the tutorial
+  nim.help:
+    description: View a list of commands
     default: true
     children:
       nim.nim: true
   nim.debug:
-    description: Allow players to debug NIM games
-    default: op
+    description: Administrative debug warnings
+    default: false
     children:
       nim.nim: true

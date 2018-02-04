@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.bukkit.inventory.Inventory;
 
-public class ComputerGameStorage {
+public class InventoryStorage {
 	
 	private static HashMap<String, Inventory> playerInv = new HashMap<String, Inventory>();
 	private static HashMap<String, Integer> playerDifficulty = new HashMap<String, Integer>();

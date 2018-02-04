@@ -22,7 +22,7 @@ public class DropItem implements Listener {
 		CenteredText.sendCenteredMessage(player, ChatColor.GOLD + " ----------  Dr. Nim  ---------- ");
 		CenteredText.sendCenteredMessage(player, ChatColor.RED + "You thought you could just... drop that?!?");
 		CenteredText.sendCenteredMessage(player,
-				ChatColor.RED.toString() + ChatColor.ITALIC + "Type /nim leave to leave the game");
+				ChatColor.RED.toString() + ChatColor.ITALIC + "Read the tutorial book for rules");
 		CenteredText.sendCenteredMessage(player, ChatColor.GOLD + "-- <> --");
 		event.setCancelled(true);
 	}

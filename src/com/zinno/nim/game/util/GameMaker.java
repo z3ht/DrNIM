@@ -40,7 +40,8 @@ public final class GameMaker {
 				return activeGames.get(sList);
 			}
 		}
-		Bukkit.broadcast(ChatColor.RED + "Error: NIM Game for " + name + " could not be found", "nim.debug");
+		Bukkit.broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW.toString() + ChatColor.BOLD + "NIM" + ChatColor.DARK_GRAY + "] "
+				+ ChatColor.RED + "Error: NIM Game for " + name + " could not be found", "nim.debug");
 		return null;
 	}
 	

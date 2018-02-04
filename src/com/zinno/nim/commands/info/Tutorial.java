@@ -11,33 +11,13 @@ import com.zinno.nim.commands.SubCommand;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Tutorial implements SubCommand {
-
-	@Override
-	public void runCommand(CommandSender sender, Command cmd, String[] args) {
-		if (!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + "Only players can use this command");
-			return;
-		}
-		Player player = (Player) sender;
-		if(!(player.hasPermission("nim.tutorial"))) {
-			player.sendMessage(ChatColor.RED + "No Permission");
-			return;
-		}
-		if(player.getInventory().addItem(Tutorial.createTutBook()).isEmpty()) {
-			player.sendMessage(ChatColor.GREEN + "A tutorial book has been sent to your inventory");
-		} else {
-			player.sendMessage(ChatColor.RED + "No open inventory slots found for tutorial book");
-			return;
-		}
-		
-	}
+public class Tutorial {
 
 	public static ItemStack createTutBook() {
 		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 		BookMeta bookMeta = (BookMeta) book.getItemMeta();
-		bookMeta.addPage(ChatColor.BOLD.toString() + ChatColor.LIGHT_PURPLE + "Welcome to NIM!" + ChatColor.RESET + "\n"
-				+ ChatColor.DARK_PURPLE + "Developed By: Zinno" + ChatColor.RESET + "\n" + "\n" + ChatColor.BLUE
+		bookMeta.addPage( ChatColor.GOLD.toString() + ChatColor.BOLD + "Welcome to NIM" + ChatColor.RESET + "\n"
+				+ ChatColor.GRAY + "Developed By: Zinno" + ChatColor.RESET + "\n" + "\n" + ChatColor.BLUE
 				+ "Objective:" + ChatColor.RESET + "\n" + "Force the other player to be the last to remove a piece");
 		bookMeta.addPage(ChatColor.BLUE + "Rules:" + ChatColor.RESET + "\n"
 				+ "  - You may only remove pieces from one row at a time" + "\n"
@@ -54,7 +34,7 @@ public class Tutorial implements SubCommand {
 		bookMeta.addPage(ChatColor.BLUE + "Additional Info:" + ChatColor.RESET + "\n"
 				+ "  - NIM originated from China as early as the 15th century" + "\n"
 				+ "  - NIM is not a game based on luck, but instead XOR logic" + "\n"
-				+ "  - This version of NIM was first released 7/23/17");
+				+ "  - This version of NIM was first released on July 23, 2017");
 		bookMeta.setDisplayName(ChatColor.DARK_AQUA.toString() + ChatColor.BOLD + "Dr. NIM");
 		bookMeta.setAuthor("Zinno");
 		book.setItemMeta(bookMeta);

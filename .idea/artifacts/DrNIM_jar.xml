@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DrNIM:jar">
+    <output-path>$PROJECT_DIR$/../../Spigot/plugins</output-path>
+    <root id="archive" name="DrNIM.jar">
+      <element id="module-output" name="DrNIM" />
+      <element id="library" level="module" name="spigot-1.12.jar" module-name="DrNIM" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Spigot/Build Tools/Spigot/Spigot-API/target/spigot-api-1.12.2-R0.1-SNAPSHOT-shaded.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

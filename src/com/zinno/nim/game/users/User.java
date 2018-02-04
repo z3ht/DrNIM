@@ -117,25 +117,29 @@ public class User extends MiniGamePlayer {
 		int z = -10;
 		Location loc = new Location(nimWorld, x, y, z);
 		player.setInvulnerable(true);
-		alert(ChatColor.GREEN + "Welcome, " + player.getName() + " to NIM!",
-				ChatColor.DARK_GREEN + "Developed By: Zinno");
+		alert(ChatColor.GOLD + "Welcome, " + player.getName() + " to NIM!",
+				ChatColor.GRAY + "Developed By: Zinno");
 		player.teleport(loc);
 		player.setHealth(20);
 		player.setSaturation(20);
+		
 		ItemStack confirmMove = new ItemStack(Material.BLAZE_POWDER);
 		ItemMeta moveMeta = confirmMove.getItemMeta();
 		moveMeta.setDisplayName(ChatColor.GREEN.toString() + ChatColor.BOLD + "Confirm Move!");
 		moveMeta.addEnchant(Enchantment.LUCK, 1, false);
 		confirmMove.setItemMeta(moveMeta);
+		
 		player.getInventory().clear();
 		player.getInventory().setItem(4, confirmMove);
 		player.getInventory().setItem(0, Tutorial.createTutBook());
+		
 		ItemStack endGame = new ItemStack(Material.ENDER_PEARL);
 		ItemMeta endMeta = endGame.getItemMeta();
 		endMeta.setDisplayName(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "Leave Game");
 		endMeta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
 		endGame.setItemMeta(endMeta);
 		player.getInventory().setItem(8, endGame);
+		
 		for (PotionEffect effect : player.getActivePotionEffects()) {
 			player.removePotionEffect(effect.getType());
 		}
